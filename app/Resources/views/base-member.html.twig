@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# <meta name="viewport" content="width=device-width, initial-scale=1.0"> #}
+
+        {% block stylesheets %}
+            <link rel="shortcut icon" type="image/x-icon" href="<?php echo HOST;?>img/favicon.ico" />
+            <link href='https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic,900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="{{ asset('bundles/thankswho/css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/thankswho/css/defaut.css') }}">
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+            <script src="{{ asset('bundles/thankswho/js/Application/default.js') }}"></script>
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+    <!-- Static navbar -->
+    <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{url('index')}}"><img class="image_header" src="{{ asset('bundles/thankswho/images/header_logo.png') }}"/></a>
+        </div>
+
+        {# <div class="navbar-collapse collapse"> #}
+
+            <img class="picto_header first_picto" src="{{ asset('bundles/thankswho/images/notification/bad_thx_off.png') }}"/>
+            <img class="picto_header" src="{{ asset('bundles/thankswho/images/notification/good_thx_off.png') }}"/>
+            <img class="picto_header" src="{{ asset('bundles/thankswho/images/notification/frenks_off.png') }}"/>
+            <img class="picto_header" src="{{ asset('bundles/thankswho/images/notification/message_off.png') }}"/>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img class="image_header" src="{{ asset('bundles/thankswho/images/header_menu.png') }}"/></a>
+                  <ul class="dropdown-menu header">
+                    <li><a href="{{url('frenks')}}"><img src="{{ asset('bundles/thankswho/images/header_frenks.png') }}"/>&nbsp;&nbsp;Mes frenks</a></li>
+                    <li><a href="{{url('mailbox')}}"><img src="{{ asset('bundles/thankswho/images/header_messages.png') }}"/>&nbsp;&nbsp;&nbsp;Messages</a></li>
+                    <li><a href="{{url('settings')}}"><img src="{{ asset('bundles/thankswho/images/header_settings.png') }}"/>&nbsp;&nbsp;Paramètres</a></li>
+                    <li><a href="{{url('help')}}"><img src="{{ asset('bundles/thankswho/images/header_help.png') }}"/>&nbsp;&nbsp;&nbsp;Aides</a></li>
+                    <li><a href="{{ path('fos_user_security_logout') }}">
+                            <img src="{{ asset('bundles/thankswho/images/header_logout.png') }}"/>
+                            &nbsp;{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="{{url('mailing')}}">Inviter mes amis</a></li>
+                    <li><a href="{{url('bug')}}">Signaler un bug</a></li>
+                    <li><a href="{{url('charte')}}">Nos engagements</a></li>
+                    <li><a href="{{url('cgu')}}">Conditions générales</a></li>
+
+                  </ul>
+                </li>
+            </ul>
+
+            <a id="name_header" class="blue" href="{{url('timeline')}}">{{ app.security.getToken().getUser().getUsername() }}</a>
+
+            <form class="navbar-form navbar-right" role="form">
+                <div class="form-group">
+                    <input id="search_header" class="form-control" type="text" placeholder="Rechercher un nom, une marque...">
+                </div>
+            </form>
+        {# </div> #}
+
+
+
+        </div>
+     </div>
+
+    <div class="main">
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    </body>
+</html>

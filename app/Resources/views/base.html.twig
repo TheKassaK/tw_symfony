@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% block stylesheets %}
+            <link rel="shortcut icon" type="image/x-icon" href="{{ asset('bundles/thankswho/images/favicon.ico') }}" />
+            <link href='https://fonts.googleapis.com/css?family=Merriweather:400,400italic,700,700italic,900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+            <link href='https://fonts.googleapis.com/css?family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
+            <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="{{ asset('bundles/thankswho/css/defaut.css') }}">
+            <link rel="stylesheet" href="{{ asset('bundles/thankswho/css/index.css') }}">
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+            <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+            <script src="{{ asset('bundles/thankswho/js/Application/index.js') }}"></script>
+        {% endblock %}
+
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+    <div class="main">
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('error') %}
+            <div class="alert alert-danger">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <hr class="hr_footer">
+            <img src="{{ asset('bundles/thankswho/images/pictofooter.png') }}"/>
+            <hr class="hr_footer">
+        </div>
+    </div>
+
+    </body>
+</html>

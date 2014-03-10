@@ -1,0 +1,36 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+Accueil ThanksWho
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+		<div class="row">
+        	<div class="col-sm-5 text-home">
+        		<img src="{{ asset('bundles/thankswho/images/logobeta.png') }}"/>
+        		<p>Bienvenue sur <strong>Thanks Who !</strong></p>
+
+				<p>Qui a <strong>influencé</strong> votre vie ?<br>
+				Qui influence <strong>votre quotidien</strong> ?</p>
+
+				<p><strong>Remerciez</strong> ou <strong>accablez</strong> les responsables !</p>
+
+				<p>Et <strong>mesurez</strong> votre part de <strong>responsabilité</strong> dans les événements qui arrivent à votre <strong>entourage</strong>.</p>
+        		<img src="{{ asset('bundles/thankswho/images/schema-home.png') }}"/>
+        	</div>
+
+        	<div class="col-sm-6 col-sm-offset-1">
+        		{% render url('fos_user_security_login') %}
+        		<p><a class="smalltext" id="password_reset" href="#">Mot de passe oublié</a></p>
+        		<div id="password_reset_toggle">
+        			{% render url('fos_user_resetting_request') %}
+        		</div>
+
+        		<hr class="hr80">
+
+        		{% render url('fos_user_registration_register') %}
+        	</div>
+      	</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% block content %}
+
+<div class="text-center">
+  	<div class="container">
+	    <div class="row">
+			<div class="col-xs-2"><img id="logo" src="{{ asset('bundles/thankswho/images/logobeta.png') }}"/></div>
+			<div class="col-xs-2"><img id="avatar" src="{{ asset('bundles/thankswho/images/avatar.png') }}"/></div>
+			<div class="col-xs-3 counter">
+				<p id="name_nav">{{ app.security.getToken().getUser().getUsername() }}</p>
+				<a href="#">
+					<span id="bad_thx_counter">0
+						<span class="counters_name grey">BAD THANKS</span>
+					</span>
+				</a>
+				<a href="#">
+					<span id="good_thx_counter">0
+						<span class="counters_name grey">GOOD THANKS</span>
+					</span>
+				</a>
+				<a href="#">
+					<span id="friends_counter">0
+						<span class="counters_name grey">FRENKS</span>
+					</span>
+				</a>
+			</div>
+			<div class="col-xs-5">
+				Generate textarea
+			</div>
+		</div>
+  	</div>
+</div>
+
+{% endblock %}
