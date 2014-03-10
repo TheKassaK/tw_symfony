@@ -1,0 +1,24 @@
+/* Page d'accueil */
+.container{
+	margin-top:65px;
+}
+
+.hr_footer {
+	border: 1px solid #85CBD5;
+    display: inline-block;
+    opacity: 0.4;
+    width: 45%;
+}
+
+#password_reset_toggle {display:none;}
+
+#login_submit {
+    background: url("../images/login.png") no-repeat 5px center #4A4A4C;
+    font-size: 15px;
+    height: 30px;
+    padding-left: 25px;
+    width: 65px;
+    color:white;
+}
+
+.text-home {font-size: 17px;}
